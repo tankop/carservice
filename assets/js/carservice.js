@@ -4,8 +4,8 @@
 var carservice = {
 
     checkSearchField: function () {
-        var client_name = $('#client-name').val();
-        var client_id_card = $('#client-id-card').val();
+        var client_name = $.trim($('#client-name').val());
+        var client_id_card = $.trim($('#client-id-card').val());
         if (client_name == '' && client_id_card == '') {
             Swal.fire({
                 type: 'error',

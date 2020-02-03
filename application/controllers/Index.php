@@ -96,6 +96,8 @@ class Index extends MasterController
         if ($this->isAjax()) {
             $post = $this->input->post();
             if (isset($post['client_name']) && isset($post['client_id_card'])) {
+                $post['client_name'] = trim($post['client_name']);
+                $post['client_id_card'] = trim($post['client_id_card']);
                 if ($post['client_name'] == '' && $post['client_id_card'] == ''){
                     echo json_encode([
                         'status' => false,
