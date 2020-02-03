@@ -172,4 +172,38 @@ class MasterModel extends CI_Model
             ->from($this->db_tablename)
             ->count_all_results() == 0 ? true : false;
     }
+
+    public function getAll($count = 0, $offset = 0, $where = false, $like = false, $order_by = false)
+    {
+        $this->db->select()
+            ->from($this->db_tablename);
+        if (is_array($where)) {
+            foreach ($where as $field => $value) {
+                if (in_array($field, $this->db_fields)) {
+                    $this->db->where($field, $value);
+                }
+            }
+        }
+        if ($count && is_numeric($count)) {
+            if ($offset && is_numeric($offset)) {
+                $this->db->limit($count, $offset);
+            }
+            $this->db->limit($count);
+        }
+        return $this->db->get()->result(get_class($this));
+    }
+
+    public function countAll($where = false){
+        $this->db->select()
+            ->from($this->db_tablename);
+        if (is_array($where)) {
+            foreach ($where as $field => $value) {
+                if (in_array($field, $this->db_fields)) {
+                    $this->db->where($field, $value);
+                }
+            }
+        }
+
+        return $this->db->count_all_results();
+    }
 }

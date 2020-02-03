@@ -17,4 +17,13 @@ class ServiceModel extends ServiceModelMap
     {
         return new self;
     }
+
+    public function getLastService($client_id, $car_id){
+        return $this->db->select()
+            ->from(self::DB_TABLE_NAME)
+            ->where([
+                self::CLIENT_ID => $client_id,
+                self::CAR_ID => $car_id
+            ])->order_by(self::LOGNUMBER, 'DESC')->get()->first_row(get_class($this));
+    }
 }

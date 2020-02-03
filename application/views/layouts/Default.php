@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title><?= lang('default.00001'); ?></title>
+	<title><?= lang('default.00019'); ?></title>
 	<?php
 	if (isset($meta) && !empty($meta)) {
 		foreach ($meta as $name => $content) {
@@ -23,6 +23,7 @@
 		'assets/vendor/components/font-awesome/css/fontawesome-all.min.css',
 		'assets/vendor/components/jqueryui/themes/base/jquery-ui.min.css',
 		'assets/vendor/sweetalert2/sweetalert2/dist/sweetalert2.min.css',
+        'assets/vendor/wenzhixin/bootstrap-table/dist/bootstrap-table.min.css',
 		'assets/css/default.css',
 	];
 	foreach ($css_array as $css_file) {
@@ -43,6 +44,9 @@
 		'assets/vendor/components/jqueryui/jquery-ui.min.js',
 		'assets/vendor/twbs/bootstrap/dist/js/bootstrap.min.js',
 		'assets/vendor/sweetalert2/sweetalert2/dist/sweetalert2.all.min.js',
+		'assets/vendor/wenzhixin/bootstrap-table/dist/bootstrap-table.min.js',
+		'assets/vendor/wenzhixin/bootstrap-table/dist/locale/bootstrap-table-hu-HU.min.js',
+		'assets/js/carservice.js',
 	];
 	foreach ($js_array as $js_file) {
 		if (file_exists($js_file)) {

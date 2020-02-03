@@ -14,6 +14,8 @@ class ClientModelMap extends MasterModel
     const DB_TABLE_NAME = 'clients';
 
     protected $id;
+    protected $name;
+    protected $idcard;
 
     function __construct()
     {
@@ -31,5 +33,25 @@ class ClientModelMap extends MasterModel
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    public function getIdcard()
+    {
+        return $this->idcard;
+    }
+
+    public function setIdcard($idcard)
+    {
+        $this->idcard = $idcard;
     }
 }

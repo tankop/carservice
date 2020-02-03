@@ -17,4 +17,13 @@ class CarModel extends CarModelMap
     {
         return new self;
     }
+
+    public function getByCarId($car_id, $client_id){
+        return $this->db->select()
+            ->from(self::DB_TABLE_NAME)
+            ->where([
+                self::CAR_ID => $car_id,
+                self::CLIENT_ID => $client_id,
+            ])->get()->first_row(get_class($this));
+    }
 }

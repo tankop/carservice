@@ -22,6 +22,8 @@ class CarModelMap extends MasterModel
     protected $registered;
     protected $ownbrand;
     protected $accident;
+    protected $last_service_event;
+    protected $last_service_event_time;
 
     function __construct()
     {
@@ -29,6 +31,11 @@ class CarModelMap extends MasterModel
         $this->setDbTablename(self::DB_TABLE_NAME);
         $this->db_fields = $this->db->list_fields($this->db_tablename);
         $this->json_data_path = 'uploads/project_data/cars.json';
+        $last_service = ServiceModel::get()->getLastService($this->client_id, $this->car_id);
+        if ($last_service instanceof ServiceModel){
+            $this->last_service_event = $last_service->getEvent();
+            $this->last_service_event_time = $last_service->getEventtime();
+        }
     }
 
     public function getClientId()
@@ -89,5 +96,25 @@ class CarModelMap extends MasterModel
     public function setAccident($accident)
     {
         $this->accident = $accident;
+    }
+
+    public function getLastServiceEvent()
+    {
+        return $this->last_service_event;
+    }
+
+    public function setLastServiceEvent($last_service_event)
+    {
+        $this->last_service_event = $last_service_event;
+    }
+
+    public function getLastServiceEventTime()
+    {
+        return $this->last_service_event_time;
+    }
+
+    public function setLastServiceEventTime($last_service_event_time)
+    {
+        $this->last_service_event_time = $last_service_event_time;
     }
 }

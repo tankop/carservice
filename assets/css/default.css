@@ -9,4 +9,11 @@
 body {
   font-family: "Roboto";
 }
+.client-name {
+  cursor: pointer;
+}
+.cars-table,
+.services-table {
+  width: 100%;
+}
 /*# sourceMappingURL=default.css.map */
